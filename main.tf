@@ -16,6 +16,20 @@ resource "aws_instance" "micro_ec2_instance"{
 
 }
 
+resource "aws_instance" "medium_ec2_instance"{
+
+    ami = var.instance_ami
+    instance_type = "t2.medium"
+    key_name = var.key_name
+    vpc_security_group_ids = [aws_security_group.vs_custom_sg.id]
+
+    tags = {
+      Name = "vs-master"
+    }
+
+}
+
+
 
 resource "aws_security_group" "vs_custom_sg" {
 
